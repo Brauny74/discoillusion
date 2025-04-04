@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg67net35nfd7"]
+
+[ext_resource type="PackedScene" uid="uid://5hehxoovbf1j" path="res://Scenes/reimu.tscn" id="1_dl6qh"]
+[ext_resource type="Script" uid="uid://bsnxfspgw408y" path="res://Scenes/char_reimu.gd" id="1_gqndt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbho3"]
+radius = 0.30656
+height = 1.90119
+
+[node name="Reimu" type="CharacterBody3D" groups=["player_char"]]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+floor_max_angle = 0.523599
+script = ExtResource("1_gqndt")
+mov_speed = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958792, 0)
+shape = SubResource("CapsuleShape3D_hbho3")
+
+[node name="reimu" parent="." instance=ExtResource("1_dl6qh")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.2
+path_postprocessing = 2
+debug_enabled = true
+debug_path_custom_color = Color(0, 0.830855, 0.831374, 1)
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

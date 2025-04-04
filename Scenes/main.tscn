@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://l4by4fvpgjlp"]
+
+[ext_resource type="Shader" uid="uid://c7ci6bauybg1h" path="res://Shaders/pixelated.gdshader" id="1_fug7c"]
+[ext_resource type="PackedScene" uid="uid://bgty18vvs5ai0" path="res://Scenes/game.tscn" id="1_honl1"]
+[ext_resource type="Texture2D" uid="uid://baniyhb2qxvb0" path="res://Shaders/aap-64-1x.png" id="3_o12jx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6u0vo"]
+shader = ExtResource("1_fug7c")
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_o12jx")
+shader_parameter/pixel_size = 2.0
+shader_parameter/palette_size = 64
+
+[node name="Main" type="Node3D"]
+
+[node name="GameLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GameLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GameLayer/SubViewportContainer"]
+handle_input_locally = false
+texture_mipmap_bias = 0.919
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Game" parent="GameLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_honl1")]
+
+[node name="PixelizationLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="PixelizationLayer"]
+material = SubResource("ShaderMaterial_6u0vo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,170 @@
+[gd_scene load_steps=23 format=3 uid="uid://cg00n6ctadbbg"]
+
+[ext_resource type="PackedScene" uid="uid://b0y2ylkdlp8rn" path="res://Scenes/aya.glb" id="1_f2g7v"]
+[ext_resource type="Shader" uid="uid://bqua1327g50x6" path="res://Scenes/outline.gdshader" id="2_co46x"]
+[ext_resource type="Shader" uid="uid://cegk5m8j7ft73" path="res://Shaders/cel_dif.gdshader" id="2_kxso4"]
+[ext_resource type="Animation" uid="uid://rgggfsjwbnyl" path="res://Animations/idle.res" id="2_m7aqu"]
+[ext_resource type="Script" uid="uid://cr5sb10yjemge" path="res://Scenes/char_visual_control.gd" id="2_ven2k"]
+[ext_resource type="Texture2D" uid="uid://11io7jmnfpy6" path="res://Scenes/aya_Body_TXT.png" id="3_44snt"]
+[ext_resource type="Texture2D" uid="uid://by4np0gghxnl8" path="res://Scenes/aya_Hair_Hat_TXT.png" id="4_r0kbh"]
+[ext_resource type="Texture2D" uid="uid://hihx1he2vcip" path="res://Scenes/aya_Face_TXT.png" id="5_od4hk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ven2k"]
+render_priority = 0
+shader = ExtResource("2_co46x")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/outline_width = 0.0
+shader_parameter/fade_start = 10.0
+shader_parameter/fade_end = 30.0
+
+[sub_resource type="Gradient" id="Gradient_krkir"]
+offsets = PackedFloat32Array(0.428571, 0.505495)
+colors = PackedColorArray(0, 0, 0, 1, 0.859679, 0.859679, 0.859679, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7c07t"]
+gradient = SubResource("Gradient_krkir")
+
+[sub_resource type="Gradient" id="Gradient_u1tbj"]
+offsets = PackedFloat32Array(0.428571, 0.637363)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_krk0j"]
+gradient = SubResource("Gradient_u1tbj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfds2"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ven2k")
+shader = ExtResource("2_kxso4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_44snt")
+shader_parameter/point_size = 0.1
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_7c07t")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_krk0j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajede"]
+render_priority = 0
+shader = ExtResource("2_co46x")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/outline_width = 0.0
+shader_parameter/fade_start = 10.0
+shader_parameter/fade_end = 30.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etc23"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ajede")
+shader = ExtResource("2_kxso4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4_r0kbh")
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_7c07t")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_krk0j")
+
+[sub_resource type="Gradient" id="Gradient_ufu2t"]
+offsets = PackedFloat32Array(0.538462, 0.593407)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfqps"]
+gradient = SubResource("Gradient_ufu2t")
+
+[sub_resource type="Gradient" id="Gradient_s0kdj"]
+offsets = PackedFloat32Array(0.384615, 0.637363)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8pq82"]
+gradient = SubResource("Gradient_s0kdj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dfpq"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ajede")
+shader = ExtResource("2_kxso4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_od4hk")
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_nfqps")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_8pq82")
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n42ri"]
+_data = {
+&"idle": ExtResource("2_m7aqu")
+}
+
+[node name="aya" instance=ExtResource("1_f2g7v")]
+script = ExtResource("2_ven2k")
+
+[node name="Skeleton" parent="Armature" index="0"]
+bones/1/position = Vector3(0.0116108, 0.724868, 0.0168465)
+bones/1/rotation = Quaternion(-0.0425072, 0.0123835, -0.0749496, 0.996204)
+bones/2/rotation = Quaternion(-0.0114222, -0.00806078, 0.105462, 0.994325)
+bones/3/rotation = Quaternion(0.00888037, -0.0033761, -0.00281768, 0.999951)
+bones/4/rotation = Quaternion(0.00880563, -0.00416226, -0.00298047, 0.999948)
+bones/5/rotation = Quaternion(0.0409195, -0.00281961, -0.0118528, 0.999088)
+bones/6/rotation = Quaternion(-0.103245, -0.0122205, 0.00556314, 0.994565)
+bones/9/rotation = Quaternion(0.51348, 0.470557, 0.576015, -0.427926)
+bones/10/rotation = Quaternion(-0.056707, 0.81092, -0.582124, -0.018008)
+bones/11/rotation = Quaternion(0.119417, -0.69695, 0.119417, 0.69695)
+bones/12/rotation = Quaternion(0.0591532, 0.815727, 0.00400643, 0.575391)
+bones/13/rotation = Quaternion(0.0380398, 0.000490323, -3.01003e-06, 0.999276)
+bones/14/rotation = Quaternion(0.123433, 0.00206487, -0.0148475, 0.99224)
+bones/15/rotation = Quaternion(0.147219, 0.00251029, -0.0181366, 0.988935)
+bones/16/rotation = Quaternion(-0.239548, 0.694795, 0.0662108, 0.674903)
+bones/17/rotation = Quaternion(0.0657524, 0.0334551, 0.011694, 0.997206)
+bones/18/rotation = Quaternion(0.0316642, -0.0834079, -0.0202859, 0.995806)
+bones/19/rotation = Quaternion(0.527686, -0.456, -0.576494, -0.425755)
+bones/20/rotation = Quaternion(0.00930238, 0.841289, -0.532325, 0.0936805)
+bones/21/rotation = Quaternion(0.159341, 0.68892, -0.159371, 0.688913)
+bones/22/rotation = Quaternion(0.0152144, -0.819797, 0.00151625, 0.57245)
+bones/23/rotation = Quaternion(0.116941, -0.00188108, 0.0129076, 0.993053)
+bones/24/rotation = Quaternion(0.116202, -0.00194408, 0.0141167, 0.993123)
+bones/25/rotation = Quaternion(0.219948, 0.0323491, 0.0353887, 0.974333)
+bones/26/rotation = Quaternion(-0.25168, -0.699111, -0.0755718, 0.664973)
+bones/27/rotation = Quaternion(0.195603, -0.0593583, 0.0106052, 0.978828)
+bones/28/rotation = Quaternion(-0.0579427, 0.0262842, -0.00498331, 0.997961)
+bones/29/rotation = Quaternion(0.0853831, 0.132745, 0.980612, -0.116144)
+bones/30/rotation = Quaternion(-0.00510381, 0.953806, -0.291678, 0.0717819)
+bones/31/rotation = Quaternion(-0.0137769, 0.608509, -0.793205, 0.0187925)
+bones/32/rotation = Quaternion(2.28515e-07, 0.99987, -0.0161346, -8.58149e-06)
+bones/33/rotation = Quaternion(-0.0531697, 0.0236017, 0.99408, -0.0917664)
+bones/34/rotation = Quaternion(0.00452244, 0.983532, -0.164309, -0.0751432)
+bones/35/rotation = Quaternion(-0.00506984, 0.632766, -0.774134, 0.0172529)
+bones/36/rotation = Quaternion(-7.96839e-08, 0.999988, 0.00481042, 3.29272e-09)
+
+[node name="Body" parent="Armature/Skeleton" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_lfds2")
+
+[node name="Hair" parent="Armature/Skeleton" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_etc23")
+
+[node name="Hat" parent="Armature/Skeleton" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_etc23")
+
+[node name="Head" parent="Armature/Skeleton" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_7dfpq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_n42ri")
+}
+autoplay = "idle"
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

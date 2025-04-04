@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b44hseobbq3av"]
+
+[ext_resource type="PackedScene" uid="uid://cmn7m1ujoyhd8" path="res://Scenes/walk_mark.glb" id="1_vge3c"]
+[ext_resource type="Script" uid="uid://drjilrn8j2bq1" path="res://walk_mark.gd" id="2_tidpg"]
+
+[node name="walk_mark" instance=ExtResource("1_vge3c")]
+script = ExtResource("2_tidpg")
+life_time = 1.0
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Idle"

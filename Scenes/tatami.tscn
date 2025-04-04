@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://drrmkcw0hxkw1"]
+
+[ext_resource type="PackedScene" uid="uid://dlfbkgtulfrj5" path="res://Scenes/tatami.glb" id="1_jiarj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b6tif"]
+size = Vector3(2.96644, 1.53723, 3.00134)
+
+[node name="tatami" instance=ExtResource("1_jiarj")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00683737, -0.731384, 0.0125122)
+shape = SubResource("BoxShape3D_b6tif")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bymgd2vl1o7se"]
+
+[ext_resource type="PackedScene" uid="uid://cg00n6ctadbbg" path="res://Scenes/aya.tscn" id="1_0xgbe"]
+[ext_resource type="Script" uid="uid://puvn25qawlu8" path="res://Scenes/npc_char.gd" id="1_yqs73"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhdv0"]
+radius = 0.275724
+height = 1.78805
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("_walk_target")]
+script = ExtResource("1_yqs73")
+_walk_target = NodePath("TalkTarget")
+
+[node name="aya" parent="." instance=ExtResource("1_0xgbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890676, 0)
+shape = SubResource("CapsuleShape3D_vhdv0")
+
+[node name="TalkTarget" type="Node3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.666582)
