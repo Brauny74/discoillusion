@@ -7,7 +7,7 @@
 radius = 0.275724
 height = 1.78805
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("_walk_target")]
+[node name="Aya" type="CharacterBody3D" node_paths=PackedStringArray("_walk_target")]
 script = ExtResource("1_yqs73")
 _walk_target = NodePath("TalkTarget")
 

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbfx1mcarak1c"]
+
+[ext_resource type="PackedScene" uid="uid://18s43jdiiwnj" path="res://Scenes/game_painted.tscn" id="1_xx4rf"]
+[ext_resource type="Shader" uid="uid://bt4ci38owh4e5" path="res://Shaders/painted_art.gdshader" id="2_rukcj"]
+[ext_resource type="Texture2D" uid="uid://dwrkanur3ap2t" path="res://Shaders/brush_bg.png" id="3_xx4rf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n2cn"]
+shader = ExtResource("2_rukcj")
+shader_parameter/brush_texture = ExtResource("3_xx4rf")
+
+[node name="main_painted" type="Node3D"]
+
+[node name="GameLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GameLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GameLayer/SubViewportContainer"]
+handle_input_locally = false
+texture_mipmap_bias = 0.919
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Game_Painted" parent="GameLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_xx4rf")]
+
+[node name="PaintedLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="PaintedLayer"]
+material = SubResource("ShaderMaterial_0n2cn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
